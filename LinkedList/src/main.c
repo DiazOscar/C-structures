@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "linkedlist.h"
+#include "iofunctions.h"
 
 int main()
 {
@@ -37,8 +38,13 @@ int main()
     listarNodos(lista);
 
     printf("\n");
+    escribirFichero("../files/archivo.txt", lista);
+
+    LinkedList lista2;
+    iniciarLista(&lista2);
+    leerFichero("../files/archivo.txt", &lista2);
 	destruirLista(&lista);
-	listarNodos(lista);
+	listarNodos(lista2);
 
     return 0;
 }

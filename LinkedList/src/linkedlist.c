@@ -83,7 +83,7 @@ void eliminarNodo(int id, LinkedList *linkedList){
 	}
 
 	if(current != NULL){
-		if(previous == NULL){ //elimino el 1�
+		if(previous == NULL){ //elimino el 1ï¿½
 			*linkedList = current->next;
 		}else{
 			previous->next = current->next;
