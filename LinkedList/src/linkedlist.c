@@ -1,9 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "linkedlist.h"
 
 void iniciarLista(LinkedList *linkedList){
     *linkedList = NULL; //inicializo la estructura
+}
+
+int sizeLista(LinkedList linkedList){
+	int n = 0;
+	while(linkedList != NULL){
+		n++;
+		linkedList = linkedList->next;
+	}
+	return n;
 }
 
 int pushNodo(LinkedList *linkedList, int idproc, char texto[]){
@@ -15,7 +25,7 @@ int pushNodo(LinkedList *linkedList, int idproc, char texto[]){
         }
 
         nuevo->id = idproc;
-        nuevo->texto = texto;
+        strcpy(nuevo->texto, texto);
         nuevo->next = *linkedList;
         *linkedList = nuevo;
 
@@ -35,7 +45,7 @@ int insertAfter(int idPrevio, int idIns, char texto[], LinkedList *linkedList){
 		}
 
 		nuevo->id = idIns;
-		nuevo->texto = texto;
+		strcpy(nuevo->texto, texto);
 		nuevo->next = (*linkedList)->next;
 		(*linkedList)->next = nuevo;
 
@@ -67,7 +77,7 @@ void listarNodos(LinkedList linkedList){
 		while(linkedList != NULL){
 		        printf("Id proc: %d \tTexto: %s\n", linkedList->id, linkedList->texto);
 		        linkedList = linkedList->next;
-		    }
+		}
 	}
 
 }
@@ -112,7 +122,7 @@ void modificarNodo(int id, char texto[], LinkedList *linkedList){
 	    }
 
 	if(*linkedList != NULL){
-		(*linkedList)->texto = texto;
+		strcpy((*linkedList)->texto, texto);
 	}else{
 		printf("No existe el nodo\n");
 	}

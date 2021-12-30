@@ -8,9 +8,11 @@ struct Nodo
 {
     /* data */
     int id;
-    char *texto;
+    char texto[20];
     LinkedList next;
 };
+
+int sizeLista(LinkedList linkedList);
 
 void iniciarLista(LinkedList *linkedList);
 

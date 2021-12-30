@@ -38,13 +38,19 @@ int main()
     listarNodos(lista);
 
     printf("\n");
-    escribirFichero("../files/archivo.txt", lista);
+    escribirFichero("archivo.bin", lista);
+    destruirLista(&lista);
+	listarNodos(lista);
 
-    LinkedList lista2;
-    iniciarLista(&lista2);
-    leerFichero("../files/archivo.txt", &lista2);
-	destruirLista(&lista);
+	LinkedList lista2;
+	iniciarLista(&lista2);
+    leerFichero("archivo.bin", &lista2);
+
 	listarNodos(lista2);
+	printf("\n");
+	eliminarNodo(3, &lista2);
+	listarNodos(lista2);
+	destruirLista(&lista2);
 
     return 0;
 }
